@@ -1,7 +1,7 @@
 import { defineComponent, toRefs } from 'vue'
-import layoutConfig from './settting'
+import store from '@/store'
 
-const { headerHeight } = toRefs(layoutConfig)
+const { headerHeight } = toRefs(store)
 
 export default defineComponent({
   name: 'AppHeader',

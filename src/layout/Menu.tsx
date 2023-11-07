@@ -1,5 +1,6 @@
 import { defineComponent, computed } from 'vue'
-import layoutConfig from './settting'
+import store from '@/store'
+
 
 export default defineComponent({
   name: 'AppMenu',
@@ -7,8 +8,8 @@ export default defineComponent({
 
     const asideStyle = computed(() => {
       return {
-        width: `${layoutConfig.menuWidth}px`,
-        paddingTop: `${layoutConfig.headerHeight}px`,
+        width: `${store.menuWidth}px`,
+        paddingTop: `${store.headerHeight}px`,
       }
     })
 

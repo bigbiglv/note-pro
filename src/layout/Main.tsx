@@ -1,13 +1,13 @@
 import { defineComponent, computed } from 'vue'
-import layoutConfig from './settting'
+import store from '@/store'
 
 export default defineComponent({
   name: 'AppMain',
   setup() {
     const articleStyle = computed(() => {
       return {
-        paddingTop: `${layoutConfig.headerHeight}px`,
-        paddingLeft: `${layoutConfig.menuWidth}px`,
+        paddingTop: `${store.headerHeight}px`,
+        paddingLeft: `${store.menuWidth}px`,
       }
     })
 
