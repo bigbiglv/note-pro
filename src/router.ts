@@ -24,7 +24,7 @@ export const routes: RouteRecordRaw[] = [
  * @param routes 当前路由
  * @param isFirst 是否为一级路由
  */
-function createdRoute(names: string[], component: any, routes: RouteRecordRaw[], isFirst = true) {
+function createdRoute(names: string[], component: any, routes: RouteRecordRaw[], prePath = '/') {
   for (let i = 0; i < names.length; i++) {
     const name = names[i]
     const nextName = names?.[i + 1]
@@ -37,8 +37,8 @@ function createdRoute(names: string[], component: any, routes: RouteRecordRaw[],
       const newRoute: RouteRecordRaw = {
         name,
         children: [],
-        // 路由为第一级时添加 /
-        path: `${isFirst ? '/' : ''}${encodeURIComponent(name)}`,
+        // 路由路径 从第一级开始拼接 /
+        path: `${prePath}${encodeURIComponent(name)}`,
         // 有下级路由时重定向到首个
         redirect: nextName ? `/${encodeURIComponent(name)}/${encodeURIComponent(nextName)}` : undefined,
         // 当前为最后一级节点时赋值组件
@@ -51,9 +51,10 @@ function createdRoute(names: string[], component: any, routes: RouteRecordRaw[],
       // 移除首个 name
       names.splice(0, 1)
       // 获取当前添加的新创建的路由
-      const childrenRoute = routes[routes.length - 1]?.children || []
+      const addRoute = routes[routes.length - 1] || {}
+      const addRouteChildren = addRoute?.children || []
       // 递归查找下一级
-      createdRoute(names, component, childrenRoute, false)
+      createdRoute(names, component, addRouteChildren, addRoute.path + '/')
     }
   }
 }
