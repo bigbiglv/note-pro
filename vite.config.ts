@@ -4,6 +4,7 @@ import Markdown from 'vite-plugin-md'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
 
+/** @type {import('vite').UserConfig} */
 export default defineConfig({
   plugins: [
     vue({
@@ -18,5 +19,6 @@ export default defineConfig({
       '@': './src',
       '@notes': './public/notes',
     },
+    extensions: ['.ts', '.tsx']
   },
 })

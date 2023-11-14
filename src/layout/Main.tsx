@@ -1,13 +1,15 @@
 import { defineComponent, computed } from 'vue'
-import store from '@/store'
+import { useAppStore } from '@/store/index.ts'
+
 
 export default defineComponent({
   name: 'AppMain',
   setup() {
+    const appStore = useAppStore()
     const articleStyle = computed(() => {
       return {
-        paddingTop: `${store.headerHeight}px`,
-        paddingLeft: `${store.menuWidth}px`,
+        paddingTop: `${appStore.headerHeight}px`,
+        paddingLeft: `${appStore.menuWidth}px`,
       }
     })
 

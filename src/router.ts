@@ -1,53 +1,79 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/pages/Home.tsx'
-
-const routers: RouteRecordRaw[] = [
+import { useAppStore } from '@/store/index.ts'
+export const routes: RouteRecordRaw[] = [
   {
-    name: '',
+    name: '哈哈',
     path: '/',
     redirect: '/home'
   },
   {
     name: '首页',
     path: '/home',
+    meta: {
+      hideMenu: true,
+    },
     component: Home,
   }
 ]
 
-const modules = import.meta.glob('../public/notes/*/*.md')
+/**
+ * 通过文件的路径层级创建路由表
+ * @param names 路径层级数组
+ * @param component 组件
+ * @param routes 当前路由
+ * @param isFirst 是否为一级路由
+ */
+function createdRoute(names: string[], component: any, routes: RouteRecordRaw[], isFirst = true) {
+  for (let i = 0; i < names.length; i++) {
+    const name = names[i]
+    const nextName = names?.[i + 1]
+    const isLast = i === names.length - 1
+    // 路由是否存在
+    const hasRouter = routes.find(el => el.name === name)
 
-for (const path in modules) {
-  const regex = new RegExp(`/notes/(.*?).md`)
-  // 获取路径中笔记的一级和二级名称
-  const combineName: string[] = path.match(regex)?.[1]?.split('/') || []
-  const [ firstName, secondName ] = combineName
-
-  // 待添加的路由对象
-  const addRouter = {
-    name: secondName,
-    path: encodeURIComponent(secondName),
-    component: modules[path]
-  }
-  const hasRouter = routers.find(el => el.name === firstName)
-  // 判断是否存在一级路由
-  if (hasRouter) {
-    // 存在就往他的children添加
-    hasRouter.children?.push(addRouter)
-  } else {
-    //不存在则创建
-    routers.push({
-      name: firstName,
-      path: `/${encodeURIComponent(firstName)}`,
-      redirect: `/${firstName}/${secondName}`,
-      children: [addRouter]
-    })
+    if(!hasRouter && i === 0) {
+      // 创建首个路由
+      const newRoute: RouteRecordRaw = {
+        name,
+        children: [],
+        // 路由为第一级时添加 /
+        path: `${isFirst ? '/' : ''}${encodeURIComponent(name)}`,
+        // 有下级路由时重定向到首个
+        redirect: nextName ? `/${encodeURIComponent(name)}/${encodeURIComponent(nextName)}` : undefined,
+        // 当前为最后一级节点时赋值组件
+        component: isLast ? component : null,
+      }
+      routes.push(newRoute)
+    }
+    // 非最后一个路径时则递归查找添加
+    if(!isLast) {
+      // 移除首个 name
+      names.splice(0, 1)
+      // 获取当前添加的新创建的路由
+      const childrenRoute = routes[routes.length - 1]?.children || []
+      // 递归查找下一级
+      createdRoute(names, component, childrenRoute, false)
+    }
   }
 }
+const modules = import.meta.glob('../public/notes/**/*.md')
+/** 根据导入的文件创建路由 */
+for (const path in modules) {
+  const regex = new RegExp(`/notes/(.*?).md`)
+  // 文件路径
+  const filePath = path.match(regex)?.[1]
+  const fileNames = filePath?.split('/') ?? []
+  // 文件层级
+  const component = modules[path]
+  createdRoute(fileNames, component, routes)
+  setTimeout(() => {
+    useAppStore().menuData = routes
+  }, 500);
 
-console.log('routers', routers)
+}
+console.log('routes', routes)
 export default createRouter({
   history: createWebHashHistory(),
-  routes: [
-    ...routers,
-  ],
+  routes,
 })
