@@ -1,22 +1,14 @@
-import { RouteRecordName, RouteMeta } from "vue-router"
+import { RouteRecordRaw } from "vue-router"
 import { defineStore } from 'pinia'
-console.log('store')
 export interface IStore {
   /** 菜单数据 */
-  menuData: Array<IMenuData>,
+  menuData: Array<RouteRecordRaw>,
   /** 顶部header高度 */
   headerHeight: number,
   /** 侧边栏宽度 */
   menuWidth: number,
-  /** 选中的菜单name */
-  selectedMenuName: RouteRecordName | undefined
-}
-
-export interface IMenuData {
-  name?: RouteRecordName,
-  path?: string,
-  meta?: RouteMeta,
-  children?: Array<IMenuData>
+  /** 选中的菜单集合 */
+  openMenuNames: string[]
 }
 
 export const useAppStore = defineStore('app', {
@@ -24,28 +16,28 @@ export const useAppStore = defineStore('app', {
     menuData: [],
     headerHeight: 80,
     menuWidth: 200,
-    selectedMenuName: '',
+    openMenuNames: [],
   }),
-  getters: {
-    // list: (state) => {
-     
-    //   setTimeout(() => {
-    //     console.log('routes',routes)
-    //   }, 2000);
-    //   return routes.map(router => {
-    //     return {
-    //       name: router.name,
-    //       path: router.path,
-    //       meta: router.meta,
-    //       children: router.children?.map(child => ({
-    //         name: child.name,
-    //         path: child.path,
-    //         meta: child.meta,
-    //         children: [],
-    //       }))
-    //     }
-    //   })
-    // }
+  actions: {
+    /** 设置打开 关闭的菜单 */
+    updateMenuOpen() {
+      /** 递归设置菜单meta的开关值 */
+      function setOpenMenu(data: RouteRecordRaw[], names: Array<string>) {
+        for(let i = 0; i < data.length; i++){
+          const menu = data[i]
+          if(!menu?.meta) menu.meta = {}
+          // 每次递归只对比第一层
+          menu.meta.open = menu.name === names?.[0]
+          if(menu?.children?.length){
+            // 对比完直接去掉 下次依旧对比第一个
+            const cutNames = names.length ? names.slice(1) : []
+            // 递归调用
+            setOpenMenu(menu.children, cutNames)
+          }
+        }
+      }
+      setOpenMenu(this.menuData, [...this.openMenuNames])
+    }
   }
 })
 

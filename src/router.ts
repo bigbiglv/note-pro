@@ -3,11 +3,6 @@ import Home from '@/pages/Home.tsx'
 import { useAppStore } from '@/store/index.ts'
 export const routes: RouteRecordRaw[] = [
   {
-    name: '哈哈',
-    path: '/',
-    redirect: '/home'
-  },
-  {
     name: '首页',
     path: '/home',
     meta: {
@@ -31,11 +26,12 @@ function createdRoute(names: string[], component: any, routes: RouteRecordRaw[],
     const isLast = i === names.length - 1
     // 路由是否存在
     const hasRouter = routes.find(el => el.name === name)
-
+ 
     if(!hasRouter && i === 0) {
       // 创建首个路由
       const newRoute: RouteRecordRaw = {
-        name,
+        // 路由名称 从第一级开始拼接 -
+        name: prePath.slice(1).replace(/\//g, '-') + name,
         children: [],
         // 路由路径 从第一级开始拼接 /
         path: `${prePath}${encodeURIComponent(name)}`,
@@ -43,6 +39,9 @@ function createdRoute(names: string[], component: any, routes: RouteRecordRaw[],
         redirect: nextName ? `/${encodeURIComponent(name)}/${encodeURIComponent(nextName)}` : undefined,
         // 当前为最后一级节点时赋值组件
         component: isLast ? component : null,
+        meta: {
+          open: false,
+        }
       }
       routes.push(newRoute)
     }
