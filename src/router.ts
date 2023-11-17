@@ -31,7 +31,7 @@ function createdRoute(names: string[], component: any, routes: RouteRecordRaw[],
       // 创建首个路由
       const newRoute: RouteRecordRaw = {
         // 路由名称 从第一级开始拼接 -
-        name: prePath.slice(1).replace(/\//g, '-') + name,
+        name: decodeURIComponent(prePath).slice(1).replace(/\//g, '-') + name,
         children: [],
         // 路由路径 从第一级开始拼接 /
         path: `${prePath}${encodeURIComponent(name)}`,

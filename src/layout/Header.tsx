@@ -8,7 +8,7 @@ export default defineComponent({
     const appStore = useAppStore()
     return () => (
       <header
-        class="w-full fixed top-0 left-0 z-10"
+        class="w-full fixed top-0 left-0 z-10 bg-white"
         style={{height: `${appStore.headerHeight}px`}}
       >
         顶部

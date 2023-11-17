@@ -15,7 +15,6 @@ export default defineComponent({
 
     return () => (
       <article style={articleStyle.value}>
-        内容
         <router-view />
       </article>
     )

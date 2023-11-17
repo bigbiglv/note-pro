@@ -18,7 +18,7 @@ const MenuItem = defineComponent({
   setup(props) {
     const appStore = useAppStore()
 
-    const { data } = props
+    const { data } = props as Props
 
     /** 点击展开菜单项 */
     function switchMenu(name?: string) {

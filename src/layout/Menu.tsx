@@ -22,7 +22,6 @@ export default defineComponent({
             appStore.menuData.map(menu => <MenuItem data={menu} key={menu.path} />)
           }
         </ul>
-        侧边 {appStore.headerHeight}
       </aside>
     )
   }
