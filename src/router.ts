@@ -41,6 +41,7 @@ function createdRoute(names: string[], component: any, routes: RouteRecordRaw[],
         component: isLast ? component : null,
         meta: {
           open: false,
+          name,
         }
       }
       routes.push(newRoute)
