@@ -53,13 +53,13 @@ const MenuItem = defineComponent({
     /** 有多个菜单的按钮 */
     const partnerItemRender = () => (
       <li>
-        <span class="select-none cursor-pointer" onClick={() => switchMenu(data.name)}>
+        <span class="select-none cursor-pointer" onClick={() => switchMenu(data.name as string)}>
           {data?.meta?.name ?? data.name}
         </span>
         {
           <ul>
             {
-              data.meta.open &&
+              data.meta?.open &&
               data.children?.map(child => {
                 return <MenuItem data={child} key={child.path} />
               })
