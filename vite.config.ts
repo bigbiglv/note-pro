@@ -4,7 +4,8 @@ import Markdown from 'vite-plugin-md'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
 import hljs from 'highlight.js';
-
+import markdownItAnchor from 'markdown-it-anchor'
+import uslug from 'uslug'
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
   plugins: [
@@ -30,6 +31,9 @@ export default defineConfig({
         }
       },
       markdownItSetup(md) {
+
+        const uslugify = s => uslug(s)
+        md.use(markdownItAnchor, {slugify: uslugify})
       },
     }),
     UnoCSS(),

@@ -20,6 +20,9 @@ dependencies:
   pinia:
     specifier: ^2.1.7
     version: registry.npmmirror.com/pinia@2.1.7(typescript@5.0.2)(vue@3.3.4)
+  uslug:
+    specifier: ^1.0.4
+    version: registry.npmmirror.com/uslug@1.0.4
   vue:
     specifier: ^3.3.4
     version: registry.npmmirror.com/vue@3.3.4
@@ -2012,6 +2015,12 @@ packages:
     engines: {node: '>=12.0.0'}
     dev: false
 
+  registry.npmmirror.com/highlightjs-line-numbers.js@2.8.0:
+    resolution: {integrity: sha512-TEf1gw0c8mb8nan0QwliqS7obT4cpUd9hzsGzsZLweteNnWea/VIqy5/aQqsa5wnz9lnvmtAkS1ZtDTjB/goYQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlightjs-line-numbers.js/-/highlightjs-line-numbers.js-2.8.0.tgz}
+    name: highlightjs-line-numbers.js
+    version: 2.8.0
+    dev: false
+
   registry.npmmirror.com/html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/html-tags/-/html-tags-3.3.1.tgz}
     name: html-tags
@@ -2268,14 +2277,6 @@ packages:
     dependencies:
       '@types/markdown-it': registry.npmmirror.com/@types/markdown-it@12.2.3
       markdown-it: registry.npmmirror.com/markdown-it@13.0.2
-    dev: false
-
-  registry.npmmirror.com/markdown-it-highlightjs@4.0.1:
-    resolution: {integrity: sha512-EPXwFEN6P5nqR3G4KjT20r20xbGYKMMA/360hhSYFmeoGXTE6hsLtJAiB/8ID8slVH4CWHHEL7GX0YenyIstVQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-highlightjs/-/markdown-it-highlightjs-4.0.1.tgz}
-    name: markdown-it-highlightjs
-    version: 4.0.1
-    dependencies:
-      highlight.js: registry.npmmirror.com/highlight.js@11.9.0
     dev: false
 
   registry.npmmirror.com/markdown-it@13.0.2:
@@ -2875,6 +2876,13 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/unorm@1.6.0:
+    resolution: {integrity: sha512-b2/KCUlYZUeA7JFUuRJZPUtr4gZvBh7tavtv4fvk4+KV9pfGiR6CQAQAWl49ZpR3ts2dk4FYkP7EIgDJoiOLDA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unorm/-/unorm-1.6.0.tgz}
+    name: unorm
+    version: 1.6.0
+    engines: {node: '>= 0.4.0'}
+    dev: false
+
   registry.npmmirror.com/update-browserslist-db@1.0.13(browserslist@4.22.1):
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/update-browserslist-db/-/update-browserslist-db-1.0.13.tgz}
     id: registry.npmmirror.com/update-browserslist-db/1.0.13
@@ -2888,6 +2896,15 @@ packages:
       escalade: registry.npmmirror.com/escalade@3.1.1
       picocolors: registry.npmmirror.com/picocolors@1.0.0
     dev: true
+
+  registry.npmmirror.com/uslug@1.0.4:
+    resolution: {integrity: sha512-Jrbpp/NS3TvIGNjfJT1sn3/BCeykoxR8GbNYW5lF6fUscLkbXFwj1b7m4DvIkHm8k3Qr6Co68lbTmoZTMGk/ow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uslug/-/uslug-1.0.4.tgz}
+    name: uslug
+    version: 1.0.4
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      unorm: registry.npmmirror.com/unorm@1.6.0
+    dev: false
 
   registry.npmmirror.com/vite-plugin-md@0.21.5(@vitejs/plugin-vue@4.2.3)(vite@4.4.5):
     resolution: {integrity: sha512-gxiiSq2PmU2zUY5ZAFLEGmDFRV6J6gF85ns3hcvtgERibNST4gWxRSabqSZbGbHp3LEBwwK7C1CRLsl46yEiWg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-plugin-md/-/vite-plugin-md-0.21.5.tgz}
