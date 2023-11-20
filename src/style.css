@@ -1,3 +1,37 @@
 body {
   margin: 0;
+  /* 小米 */
+  /* font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif; */
+  /* 苹果 */
+  font-family: SF Pro SC,SF Pro Text,SF Pro Icons,PingFang SC,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+code{
+  font-family: Consolas,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+}
+.hljs{
+  font-family: Consolas,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(239, 239, 239);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(148, 148, 148);
 }

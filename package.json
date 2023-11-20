@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.57.4",
+    "highlight.js": "^11.9.0",
+    "markdown-it": "^13.0.2",
+    "markdown-it-anchor": "^8.6.7",
     "pinia": "^2.1.7",
     "vue": "^3.3.4",
     "vue-router": "4"
