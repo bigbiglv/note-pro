@@ -69,7 +69,7 @@ for (const path in modules) {
   const component = modules[path]
   createdRoute(fileNames, component, routes)
   setTimeout(() => {
-    useAppStore().menuData = routes
+    useAppStore().routeData = routes
   }, 500);
 
 }

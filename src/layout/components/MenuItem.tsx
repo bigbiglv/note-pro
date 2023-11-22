@@ -37,9 +37,6 @@ const MenuItem = defineComponent({
         // 当前菜单为打开状态 关闭
         appStore.openMenuNames = appStore.openMenuNames.slice(0, index)
       }
-
-      // 刷新菜单开关判断
-      appStore.updateMenuOpen()
     }
 
     /** 单个菜单的按钮 */

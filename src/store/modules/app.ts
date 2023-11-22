@@ -1,8 +1,8 @@
 import { RouteRecordRaw } from "vue-router"
 import { defineStore } from 'pinia'
 export interface IStore {
-  /** 菜单数据 */
-  menuData: Array<RouteRecordRaw>,
+  /** 路由数据 */
+  routeData: Array<RouteRecordRaw>,
   /** 顶部header高度 */
   headerHeight: number,
   /** 侧边栏宽度 */
@@ -15,15 +15,15 @@ export interface IStore {
 
 export const useAppStore = defineStore('app', {
   state: (): IStore => ({
-    menuData: [],
+    routeData: [],
     headerHeight: 80,
     menuWidth: 200,
     openMenuNames: [],
     anchorData: []
   }),
-  actions: {
-    /** 设置打开 关闭的菜单 */
-    updateMenuOpen() {
+  getters: {
+    /** 根据打开当前路径 递归获取打开的菜单 */
+    menuData: (state): Array<RouteRecordRaw> => {
       /** 递归设置菜单meta的开关值 */
       function setOpenMenu(data: RouteRecordRaw[], names: Array<string>) {
         for(let i = 0; i < data.length; i++){
@@ -38,10 +38,11 @@ export const useAppStore = defineStore('app', {
             setOpenMenu(menu.children, cutNames)
           }
         }
+        return data
       }
-      setOpenMenu(this.menuData, [...this.openMenuNames])
+      return setOpenMenu(state.routeData, [...state.openMenuNames])
     }
-  }
+  },
 })
 
 
