@@ -7,7 +7,7 @@ export default defineComponent({
     const appStore = useAppStore()
     const activeId = ref<string>()
 
-    function move(id: string, behavior: ScrollBehavior = 'smooth') {
+    function move(id: string, behavior: any = 'smooth') {
       const targetEl = document.getElementById(id)
       const targetTop = targetEl?.offsetTop
       if(targetEl) {
