@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/pages/Home.tsx'
 import { useAppStore } from '@/store/index.ts'
 export const routes: RouteRecordRaw[] = [
@@ -75,6 +75,6 @@ for (const path in modules) {
 }
 console.log('routes', routes)
 export default createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 })

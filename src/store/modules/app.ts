@@ -9,6 +9,8 @@ export interface IStore {
   menuWidth: number,
   /** 选中的菜单集合 */
   openMenuNames: string[]
+  /** 页面锚点 */
+  anchorData: string[]
 }
 
 export const useAppStore = defineStore('app', {
@@ -17,6 +19,7 @@ export const useAppStore = defineStore('app', {
     headerHeight: 80,
     menuWidth: 200,
     openMenuNames: [],
+    anchorData: []
   }),
   actions: {
     /** 设置打开 关闭的菜单 */
