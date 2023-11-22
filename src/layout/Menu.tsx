@@ -29,7 +29,7 @@ export default defineComponent({
         class="w-3xl h-full fixed top-0 left-0 overflow-y-auto"
         style={asideStyle.value}
       >
-        <ul>
+        <ul class='list-none p-0 m-0'>
           {
             appStore.menuData.map(menu => <MenuItem data={menu} key={menu.path} />)
           }

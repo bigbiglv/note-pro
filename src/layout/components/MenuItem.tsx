@@ -41,20 +41,22 @@ const MenuItem = defineComponent({
 
     /** 单个菜单的按钮 */
     const singleItemRender = () => (
-      <li>
-        <router-link to={data.path}>
+      <li class='h-40px px-4 pl-8 flex items-center'>
+        <router-link to={data.path} class='no-underline'>
           {data?.meta?.name ?? data.name}
         </router-link>
       </li>
     )
     /** 有多个菜单的按钮 */
     const partnerItemRender = () => (
-      <li>
-        <span class="select-none cursor-pointer" onClick={() => switchMenu(data.name as string)}>
-          {data?.meta?.name ?? data.name}
-        </span>
+      <>
+        <li class='h-40px px-4 flex items-center' onClick={() => switchMenu(data.name as string)}>
+          <span class="select-none cursor-pointer">
+            {data?.meta?.name ?? data.name}
+          </span>
+        </li>
         {
-          <ul>
+          <ul class='list-none p-0'>
             {
               data.meta?.open &&
               data.children?.map(child => {
@@ -63,7 +65,7 @@ const MenuItem = defineComponent({
             }
           </ul>
         }
-      </li>
+      </>
     )
 
     const menuItemRender = () => (data.children?.length ? partnerItemRender() : singleItemRender())
