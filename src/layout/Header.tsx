@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { useAppStore } from '@/store/index.ts'
-
+import AppSearch from './components/Search'
 
 export default defineComponent({
   name: 'AppHeader',
@@ -12,6 +12,7 @@ export default defineComponent({
         style={{height: `${appStore.headerHeight}px`}}
       >
         顶部
+        <AppSearch />
       </header>
     )
   }
