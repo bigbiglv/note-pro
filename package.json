@@ -12,6 +12,7 @@
     "@unocss/reset": "^0.57.4",
     "@vueuse/core": "^10.7.1",
     "highlight.js": "^11.9.0",
+    "less": "^4.2.0",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "pinia": "^2.1.7",
