@@ -8,11 +8,19 @@ body {
 
 code{
   font-family: Consolas,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  /* color:var(--hljs-color); */
+  background-color: rgba(231, 231, 231, 5);
+  border-radius: 5px;
+  padding: 0 6px;
+  margin: 0 5px;
+  cursor: text;
 }
 .hljs{
   font-family: Consolas,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
   border-radius: 5px;
   font-size: 14px;
+  padding: 0;
+  margin: 0;
 }
 
 /* 滚动条 */
