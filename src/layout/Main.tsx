@@ -11,8 +11,8 @@ export default defineComponent({
 
     const mainStyle = computed(() => {
       return {
-        paddingTop: `${appStore.headerHeight}px`,
-        paddingLeft: `${appStore.menuWidth}px`,
+        paddingTop: `${appStore.headerHeight + 20}px`,
+        paddingLeft: `${appStore.menuWidth + 20}px`,
       }
     })
 
@@ -37,11 +37,11 @@ export default defineComponent({
     }
 
     return () => (
-      <main style={mainStyle.value}>
-        <article ref={noteRef} class='pr-250px relative'>
+      <main style={mainStyle.value} class='h-screen overflow-hidden' id='appMain'>
+        <article ref={noteRef} class='h-full overflow-auto pt-20px pr-250px pb-50px pl-20px relative bg-red-50  rounded-md'>
           <router-view />
-          <Anchor />
         </article>
+        <Anchor />
       </main>
     )
   }

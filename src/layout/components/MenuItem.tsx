@@ -1,7 +1,6 @@
 import { RouteRecordRaw } from "vue-router"
-import { defineComponent } from 'vue'
+import { defineComponent, TransitionGroup } from 'vue'
 import { useAppStore } from '@/store/index.ts'
-
 
 interface Props {
   data: RouteRecordRaw
@@ -56,14 +55,19 @@ const MenuItem = defineComponent({
           </span>
         </li>
         {
-          <ul class='list-none p-0'>
+          data.meta?.open && 
+          <TransitionGroup
+            class="list-none p-0"
+            name="list"
+            tag="ul"
+            appear
+          >
             {
-              data.meta?.open &&
               data.children?.map(child => {
                 return <MenuItem data={child} key={child.path} />
               })
             }
-          </ul>
+          </TransitionGroup>
         }
       </>
     )

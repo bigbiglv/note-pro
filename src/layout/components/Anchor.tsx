@@ -10,8 +10,11 @@ export default defineComponent({
     function move(id: string, behavior: any = 'smooth') {
       const targetEl = document.getElementById(id)
       const targetTop = targetEl?.offsetTop
+      const appMain = document.getElementById('appMain')
+      const article = appMain?.querySelector('article')
+      console.log('appMain', appMain)
       if(targetEl) {
-        window.scrollTo({
+        article?.scrollTo({
           top: targetTop,
           behavior
         })
@@ -28,25 +31,23 @@ export default defineComponent({
     })
 
     return () => (
-      <>
-        <ul
-          class='w-200px p-0 fixed right-0 z-10 text list-none cursor-pointer'
-          style={{top: `${appStore.headerHeight}px`}}
-        >
-          {
-            appStore.anchorData.map(anchor => {
-              return (
-                <li 
-                  onClick={() => move(anchor)}
-                  class={`py-1 ${activeId.value === anchor ? 'font-bold' : ''}`}
-                >
-                  { anchor }
-                </li>
-              )
-            })
-          }
-        </ul>
-      </>
+      <ul
+        class='w-200px max-h-600px p-0 fixed right-10 z-10 text list-none cursor-pointer overflow-y-auto'
+        style={{top: `${appStore.headerHeight + 20}px`}}
+      >
+        {
+          appStore.anchorData.map(anchor => {
+            return (
+              <li 
+                onClick={() => move(anchor)}
+                class={`text-14px py-1 ${activeId.value === anchor ? 'font-bold' : ''}`}
+              >
+                { anchor }
+              </li>
+            )
+          })
+        }
+      </ul>
     )
   }
 })
