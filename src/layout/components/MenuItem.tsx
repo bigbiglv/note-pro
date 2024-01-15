@@ -57,7 +57,6 @@ const MenuItem = defineComponent({
         {
           data.meta?.open && 
           <TransitionGroup
-            class="list-none p-0"
             name="list"
             tag="ul"
             appear
