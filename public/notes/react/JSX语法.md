@@ -1,12 +1,11 @@
 # JSX语法
 * JavaScript XML
-1. 不需要引号
-2. 可以用括号整体括起来
-3. 只能有一个根标签
-4. 表达式使用 `{}` 包起来，也是以使用三木运算符和`map`循环
-5. 标签上的`class`改成`className`
-6. 标签上的`style`需要传一个对象，变量使用括号数值需要传入对象所以就是两个括号
-7. 标签为小写
+1. 表达式使用 `{}` 包起来，可使用三木运算符和`map`循环
+2. 变量作为值不需要引号直接使用`{}`
+3. 最外层不能有多个标签需要一个根标签，可以用括号或者`<></>`整体括起来
+4. 标签上的`class`改成`className`
+5. 标签上的`style`需要传一个对象，变量使用括号数值需要传入对象所以就是两个括号`style={{color: 'red'}}`
+6. `html`标签为小写，组件标签为大驼峰
    
 ## `class`和`style`
 ```jsx
@@ -34,6 +33,8 @@ render(){
 ```
 
 ## 事件绑定
+* 使用驼峰的形式 `onClick onChange`来使用对应的`dom`元素事件
+* 注意绑定的函数后面带`()`会立即执行，需要传递参数可以多包一层箭头函数
 ```jsx{4,8-10}
 class MyComponent extends React.Component {
   render(){
@@ -60,7 +61,7 @@ export default function useCount (){
 }
 ```
 
-## 数据遍历
+## 遍历
 ```jsx{8-12}
 import { useState } from 'react'
 export default function useCount (){
